@@ -27,7 +27,7 @@ class Deque:
 
     def remove_back(self):
         if not self.is_empty():
-            self.deque.pop(self.len)
+            self.deque.pop(self.len - 1)
             self.len -= 1
         return None
 
@@ -44,6 +44,7 @@ class Deque:
     def show_deque(self):
         for i in self.deque:
             print(f"{i}", end=" ")
+        print("\n")
         
 
 d = Deque()
@@ -58,5 +59,23 @@ d.insert_back(40) # 7 5 10 20 40
 
 d.show_deque()
 
-print(f"\nFront element: {d.front()}") # Print 7
-print(f"Back element: {d.back()}") # Print 40
+print(f"Front element: {d.front()}") # Print 7
+print(f"Back element: {d.back()}\n") # Print 40
+
+d.remove_back() # 7 5 10 20
+d.show_deque()
+
+d.remove_front() # 7 5 10 20
+d.show_deque()
+
+d.remove_back() # 7 5 10
+d.show_deque()
+
+d.remove_back() # 7 5
+d.show_deque()
+
+d.remove_back() # 7
+d.show_deque()
+
+d.remove_back() # empty
+d.show_deque()
