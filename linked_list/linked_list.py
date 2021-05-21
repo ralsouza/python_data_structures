@@ -1,106 +1,152 @@
 class Node:
 
-    def __ini__(self, label):
-        self.label = label
-        self.next = None
+	def __init__(self, label):
+		self.label = label
+		self.next = None
 
-    def get_label(self):
-        return self.label
+	def getLabel(self):
+		return self.label
 
-    def set_label(self, label):
-        self.label = label
+	def setLabel(self, label):
+		self.label = label
 
-    def get_next(self):
-        return self.next
+	def getNext(self):
+		return self.next
 
-    def set_next(self, next):
-        self.set_next = next
+	def setNext(self, next):
+		self.next = next
 
 
 class LinkedList:
 
-    def __init__(self):
-        self.first = None
-        self.last = None
-        self.len_list = 0
+	def __init__(self):
+		self.first = None
+		self.last = None
+		self.len_list = 0
 
-    def push(self, label, index):
+	def push(self, label, index):
 
-        if index >= 0:
-            # Creating a new node
-            node = Node(label)
+		if index >= 0:
 
-            # Checking whether list is empty
-            if self.empty():
-                self.first = node
-                self.last = node
-            else:
-                if index == 0:
-                    # Inserting at begining
-                    node.set_next(self.first)
-                    self.first = node
-                elif index >= self.len_list:
-                    # inserting at the end
-                    node.set_next(self.last)
-                    self.last = node
-                else:
-                    # Insert in the middle
-                    prev_node = self.first
-                    curr_node = self.first.get_next()
-                    curr_index = 1
+			# cria o novo nó
+			node = Node(label)
 
-                    while curr_node != None:
-                        if curr_index == index:
-                            # Sets the curr_node as next node
-                            node.set_next(curr_node)
+			# verifica se a lista está vazia 
+			if self.empty():
+				self.first = node
+				self.last = node
+			else:
 
-                            # Sets the node as next of the prev_node
-                            prev_node.set_next(node)
-                            
-                            break
+				if index == 0:
+					# inserção no início
+					node.setNext(self.first)
+					self.first = node
+				elif index >= self.len_list:
+					# inserção ao final
+					self.last.setNext(node)
+					self.last = node
+				else:
+					# inserção no meio
+					prev_node = self.first
+					curr_node = self.first.getNext()
+					curr_index = 1
 
-                        prev_node = curr_node
-                        curr_node = curr_node.get_next()
-                        curr_index += 1
+					while curr_node != None:
 
-            # Refresh list size
-            self.len_list += 1
+						if curr_index == index:
+							# seta o curr_node como o próximo do nó
+							node.setNext(curr_node)
+							# seta o node como o próximo do prev_nodes
+							prev_node.setNext(node)
 
-    def pop(self, index):
-        
-        if not self.empty() and index >= 0 and index < self.len_list:
+						prev_node = curr_node
+						curr_node = curr_node.getNext()
+						curr_index += 1
 
-            flag_remove = False
+			# atualiza o tamanho da lista
+			self.len_list += 1
 
-            if self.first.get_next() == None:
-                # Having only one element
-                self.first = None
-                self.last = None
-                flag_remove = True
-            elif index == 0:
-                # Removing from the begining, but has more than one element
-                self.first = self.first.get_next()
-                flag_remove = True
-            else:
-                """
-                    The list has more than one element and the remove isn't 
-                    at the begining
-                """
-                prev_node = self.first
-                curr_node = self.first.get_next()
-                curr_index += 1
+	def pop(self, index):
 
-                while curr_node != None:
-                    if index == curr_index:
-                        # The next of the previous points to the next current node
-                        prev_node.set_next(curr_node.get_next())
-                        curr_node.set_next(None)
-                        flag_remove = True
-                        break
+		if not self.empty() and index >= 0 and index < self.len_list:
 
-                    prev_node = curr_node
-                    curr_node = curr_node.get_next()
-                    curr_index += 1
+			flag_remove = False
+			
+			if self.first.getNext() == None:
+				# possui apenas 1 elemento
+				self.first = None
+				self.last = None
+				flag_remove = True
+			elif index == 0:
+				# remove do início, mas possui mais de 1 elemento
+				self.first = self.first.getNext()
+				flag_remove = True
+			else:
+				'''
+					Se chegou aqui é porque a lista possui mais
+					de 1 elemento e a remoção não é no início
+				'''
 
-            if flag_remove:
-                self.len_list -= 1
+				prev_node = self.first
+				curr_node = self.first.getNext()
+				curr_index = 1
+
+				while curr_node != None:
+
+					if index == curr_index:
+						# o próximo do anterior aponta para o próximo do nó corrente
+						prev_node.setNext(curr_node.getNext())
+						curr_node.setNext(None)
+						flag_remove = True
+						break
+
+					prev_node = curr_node
+					curr_node = curr_node.getNext()
+					curr_index += 1
+
+			if flag_remove:
+				# atualiza o tamanho da lista
+				self.len_list -= 1
+
+	def empty(self):
+		if self.first == None:
+			return True
+		return False
+
+	def length(self):
+		return self.len_list
+
+	def show(self):
+
+		curr_node = self.first
+
+		while curr_node != None:
+			print(curr_node.getLabel(), end=' ')
+			curr_node = curr_node.getNext()
+		print('')
+
+lista = LinkedList()
+
+# teste inserção
+lista.push('Marcos', 0) # inserção no início
+lista.show()
+lista.push('Maria', 1) # inserção no final
+lista.show()
+lista.push('Yankee', 0) # inserção no início
+lista.show()
+lista.push('Catarina', 2) # inserção no meio
+lista.show()
+lista.push('Lilica', 4) # inserção no final
+lista.show()
+lista.push('Sara', 2) # inserção no meio
+lista.show()
+print('Tamanho da lista: %d\n' % lista.length())
+
+# teste remoção
+lista.pop(0) # remoção do início
+lista.show()
+lista.pop(2) # remoção do meio
+lista.show()
+lista.pop(3) # remoção do final
+lista.show()
+print('Tamanho da lista: %d\n' % lista.length())
