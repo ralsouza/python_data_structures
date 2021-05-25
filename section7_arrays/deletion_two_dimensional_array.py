@@ -24,4 +24,3 @@ new_td_array = np.delete(two_dim_array, 0, axis=1)
 
 print("\nNew array without second column:")
 print(new_td_array)
-
