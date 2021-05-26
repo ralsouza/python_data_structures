@@ -35,3 +35,16 @@ print(sum(a))
 # Computing the average of the list
 print("\nAverage value of the list:")
 print(sum(a)/len(a))
+
+# ------- Mini Challenge --------
+def compute_avg():
+    list = []
+    while (True):
+        input_number = input("Enter a number: ")
+        if input_number == "done":
+            break
+        else:
+            list.append(float(input_number))
+    return (sum(list)/len(list))
+    
+print(f"The average is: {compute_avg()}")
