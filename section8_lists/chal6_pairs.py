@@ -6,4 +6,14 @@
 my_list = [2,4,3,5,6,-2,4,7,8,9]
 
 def pair_sum(list, num_sum):
-    
+    output = []
+
+    for i in range(len(list)):
+        for j in range(i+1, len(list)):
+            if list[i] + list[j] == num_sum:
+                print(f"{list[i]} + {list[j]} = {num_sum}")
+                # output.append(list[i])
+
+    return output
+
+print(pair_sum(my_list, 7))
