@@ -11,8 +11,8 @@ def pair_sum(list, num_sum):
     for i in range(len(list)):
         for j in range(i+1, len(list)):
             if list[i] + list[j] == num_sum:
-                print(f"{list[i]} + {list[j]} = {num_sum}")
-                # output.append(list[i])
+                # print(f"{list[i]} + {list[j]} = {num_sum}")
+                output.append(f"{list[i]}+{list[j]}")
 
     return output
 
