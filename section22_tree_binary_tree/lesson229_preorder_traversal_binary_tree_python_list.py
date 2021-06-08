@@ -1,4 +1,4 @@
-# PreOrder Transversal of Binary Tree - Python List
+# PreOrder Traversal of Binary Tree - Python List
 # Root Node > Left Subtree > Right Subtree
 
 from typing import NewType
@@ -23,19 +23,19 @@ class BinaryTree:
                 return "Success."
         return "Not found."
     
-    def preorder_transversal(self, index):
-        if index > self.last_used_index:
+    def pre_order_traversal(self, index):
+        if index > self.last_used_index: # If true, we visited all nodes and stop the search
             return
-        print(self.custom_list[index])
-        self.preorder_transversal(index*2)
-        self.preorder_transversal(index*2+1)
+        print(self.custom_list[index]) # Visit the root node
+        self.pre_order_traversal(index*2) # Visit the left subtree
+        self.pre_order_traversal(index*2+1) # Visit the right subtree
 
 new_bt = BinaryTree(8)
 
-new_bt.insert_node("Drinks")
-new_bt.insert_node("Hot")
-new_bt.insert_node("Cold")
-new_bt.insert_node("Tea")
-new_bt.insert_node("Coffee")
+new_bt.insert_node("Drinks") # Root node
+new_bt.insert_node("Hot") # Left node
+new_bt.insert_node("Cold") # Right node
+new_bt.insert_node("Tea") # Left child of Hot node
+new_bt.insert_node("Coffee") # Right child of Hot node
 
-new_bt.preorder_transversal(1)
+new_bt.pre_order_traversal(1) # First index is 1, because 0 index is empty in this case
