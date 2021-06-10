@@ -1,4 +1,4 @@
-# InOrder Transversal of Binary Tree - Python List
+# Level Order Traversal of Binary Tree - Python List
 
 class BinaryTree:
     def __init__(self, size):
@@ -33,6 +33,17 @@ class BinaryTree:
         print(self.custom_list[index])
         self.in_order_traversal(index*2+1)
 
+    def post_order_traversal(self, index):
+        if index > self.last_used_index:
+            return 
+        self.post_order_traversal(index*2)
+        self.post_order_traversal(index*2+1)
+        print(self.custom_list[index])
+
+    def level_order_traversal(self, index):
+        for i in range(index, self.last_used_index + 1):
+            print(self.custom_list[i])
+
 new_bt = BinaryTree(8)
 
 new_bt.insert_node("Drinks")
@@ -41,4 +52,4 @@ new_bt.insert_node("Cold")
 new_bt.insert_node("Tea")
 new_bt.insert_node("Coffee")
 
-new_bt.in_order_traversal(1)
+new_bt.level_order_traversal(1)
