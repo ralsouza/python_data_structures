@@ -1,9 +1,6 @@
 # PreOrder Traversal of Binary Tree - Python List
 # Root Node > Left Subtree > Right Subtree
 
-from typing import NewType
-
-
 class BinaryTree:
     def __init__(self, size):
         self.custom_list = size * [None]

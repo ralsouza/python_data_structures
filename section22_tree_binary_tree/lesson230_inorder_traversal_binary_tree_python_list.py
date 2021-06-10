@@ -1,8 +1,5 @@
 # InOrder Transversal of Binary Tree - Python List
 
-from typing import NewType
-
-
 class BinaryTree:
     def __init__(self, size):
         self.custom_list = size * [None]
