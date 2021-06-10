@@ -29,12 +29,6 @@ class BinaryTree:
         self.preorder_transversal(index*2)
         self.preorder_transversal(index*2+1)
 
-    def inorder_traversal(self, index):
-        if index > self.last_used_index:
-            return
-        self.inorder_traversal(index*2)
-        print(self.custom_list[index])
-        self.inorder_traversal(index*2+1)
 
 new_bt = BinaryTree(8)
 
@@ -43,5 +37,3 @@ new_bt.insert_node("Hot")
 new_bt.insert_node("Cold")
 new_bt.insert_node("Tea")
 new_bt.insert_node("Coffee")
-
-new_bt.inorder_traversal(1)
