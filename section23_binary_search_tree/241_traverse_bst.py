@@ -2,7 +2,7 @@
 
 # Insert a node to BST
 
-import queue
+import QueueLinkedList as queue
 
 class BSTNode:
     def __init__(self, data):
@@ -50,7 +50,15 @@ def level_order_traversal(root_node):
     if not root_node:
         return
     else:
-        pass # Check previous lessions
+        customQueue = queue.Queue()
+        customQueue.enqueue(root_node)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            print(root.value.data)
+            if root.value.left_child is not None:
+                customQueue.enqueue(root.value.left_child)
+            if root.value.right_child is not None:
+                customQueue.enqueue(root.value.right_child)
      
 
 new_bst = BSTNode(None)
@@ -73,3 +81,6 @@ in_order_traversal(new_bst)
 
 print("**** Post Order Traversal ****")
 post_order_traversal(new_bst)
+
+print("**** Level Order Traversal ****")
+level_order_traversal(new_bst)
