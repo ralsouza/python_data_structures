@@ -1,4 +1,4 @@
-# Search a for a node in Binary Search Tree
+# Deleting a node in Binary Search Tree
 
 import QueueLinkedList as queue
 
