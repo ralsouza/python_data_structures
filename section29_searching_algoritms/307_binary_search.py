@@ -21,22 +21,27 @@ def binary_search(array, value):
     end = len(array) - 1
     middle = math.floor((start + end)/2)
 
-    while not(array[middle] == value):
+    while not(array[middle] == value) and start <= end:
         if value < array[middle]:
             end = middle - 1 # Move new middle index before the current middle
         else:
             start = middle + 1 # Move new middle index after the current middle
         middle = math.floor((start + end)/2) # Recalculate the middle index
-        print(start, middle, end) # Test pointers
-
-    return middle
+        # print(start, middle, end) # Test pointers
+    if array[middle] == value:
+        return middle
+    else:
+        return -1
 
 arr = [8,9,12,15,17,19,20,21,28]
 
-binary_search(arr,15)
+print(binary_search(arr,15))
 
 # [8,9,12,15,17,19,20,21,28]
 #  S          M           E
 #  S M     E
 #      SM  E
 #         SME
+
+# Test nonexistent value
+print(binary_search(arr,100))
